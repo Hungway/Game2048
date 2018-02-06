@@ -1,0 +1,147 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="#FF58407C">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:layout_marginBottom="20dp"
+            android:layout_above="@+id/gameContainer"
+            android:layout_alignLeft="@+id/gameContainer"
+            android:layout_alignStart="@+id/gameContainer"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:background="@android:color/background_light">
+
+            <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    android:text="当前得分"
+                    android:textSize="18dp"
+                    android:textColor="#ff3d2964"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#ff3d2964"
+                android:gravity="center_horizontal"
+                android:layout_below="@id/tv1"
+                android:layout_marginBottom="0dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_marginBottom="20dp"
+            android:layout_above="@+id/gameContainer"
+            android:layout_alignRight="@+id/gameContainer"
+            android:layout_alignEnd="@+id/gameContainer"
+            android:background="@android:color/background_light">
+
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:text="历史最高"
+                android:textSize="18dp"
+                android:textColor="#ff3d2964"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/tvBestScore"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#ff3d2964"
+                android:gravity="center_horizontal"
+                android:layout_below="@id/tv2"
+                android:layout_marginBottom="0dp" />
+
+        </RelativeLayout>
+
+        <Button
+            android:text="关于作者"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_alignBaseline="@+id/btnNewGame"
+            android:layout_alignBottom="@+id/btnNewGame"
+            android:layout_toLeftOf="@+id/btnNewGame"
+            android:layout_toStartOf="@+id/btnNewGame" />
+
+        <Button
+            android:id="@+id/btnNewGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新开始"
+            android:layout_marginBottom="26dp"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/gameContainer"
+            android:layout_alignEnd="@+id/gameContainer" />
+
+        <FrameLayout
+            android:id="@+id/gameContainer"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
+            android:layout_marginBottom="21dp"
+            android:layout_above="@+id/button"
+            android:layout_centerHorizontal="true">
+
+          <com.lthergo.game2048.GameView
+                android:id="@+id/gameView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+            </com.lthergo.game2048.GameView>
+
+            <com.lthergo.game2048.AnimLayer
+                android:id="@+id/animLayer"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+            </com.lthergo.game2048.AnimLayer>
+
+        </FrameLayout>
+
+        <TextView
+            android:text="滑动此区域开始游戏"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvStart"
+            android:elevation="1dp"
+            android:layout_above="@+id/btnNewGame"
+            android:layout_marginBottom="170dp"
+            android:gravity="center_horizontal"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
