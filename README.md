@@ -13,7 +13,7 @@
 
 
 ## 游戏界面
-![](readme.res/display1.png)  ![](readme.res/display2.png)
+![](README.res/display1.png)  ![](README.res/display2.png)
 
 
 ## 布局分析
@@ -128,9 +128,9 @@ setOnTouchListener(new OnTouchListener() {
 在发给我朋友测试的过程中，发现了安卓系统版本不同所导致的若干问题  
 小米4（Android4.4）  
 游戏界面布局不一样，似乎变成默认的了，比如Button的样式，StatusBar不显示等等，暂时不知道问题出在哪，暂时并无大碍，可能是Android版本问题导致的AppCompat不同吧，但是打包编译过后应该不会这样啊orz，于是我修改了一点布局样式让在4.4系统中也较为美观  
-![](readme.res/bug1.png)  
+![](README.res/bug1.png)  
 Android7.0及以上版本  
 最开始打开游戏时候gameview的区域不显示，而需要初次滑动之后才显示游戏gameview区域，我试过在游戏初始化添加swipeleft（right，up，down）等操作模拟滑动，可是还是不显示。这一现象只在高版本的安卓系统才出现，结合在布局界面出现的Rendering Problems，我认为应该是同一个问题。最终我只能在初始化界面加了一个TextView提示游戏已经正常打开，在执行任意一方向滑动操作后将此TextView去除，这样只是不好看了点  
-![](readme.res/bug2.png)  
+![](README.res/bug2.png)  
 #####更多代码详解，请访问我的博客：
 https://lthergo.com/game2048.html
