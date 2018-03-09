@@ -132,5 +132,5 @@ setOnTouchListener(new OnTouchListener() {
 Android7.0及以上版本  
 最开始打开游戏时候gameview的区域不显示，而需要初次滑动之后才显示游戏gameview区域，我试过在游戏初始化添加swipeleft（right，up，down）等操作模拟滑动，可是还是不显示。这一现象只在高版本的安卓系统才出现，结合在布局界面出现的Rendering Problems，我认为应该是同一个问题。最终我只能在初始化界面加了一个TextView提示游戏已经正常打开，在执行任意一方向滑动操作后将此TextView去除，这样只是不好看了点  
 ![](readme.res/bug2.png)  
-######更多代码详解，请访问我的博客：
+#####更多代码详解，请访问我的博客：
 https://lthergo.com/game2048.html
