@@ -17,7 +17,7 @@
 
 
 ## 布局分析
-我通过在res/values/styles.xml中修改actionbar为NoActionBar来隐藏这一栏`<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">`，在Theme Editor中修改它自带的colorPrimaryDark和colorAccent的颜色为紫色，来实现顶部Status和所有提示布局颜色为紫色，实现游戏的伪全屏（更美观）。左上角和右上角通过两个包裹好的TextView来实现显示当前得分和历史最高得分。中间深紫色的游戏布局，则是通过函数来实现的动态游戏界面，它需要通过引入包名和类名来置入
+我通过在res/values/styles.xml中修改actionbar为NoActionBar来隐藏这一栏`<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">`，在Theme Editor中修改它自带的colorPrimaryDark和colorAccent的颜色为紫色，来实现顶部Status和所有提示布局颜色为紫色，实现游戏的伪全屏（更美观）。左上角和右上角通过两个包裹好的TextView来实现显示当前得分和历史最高得分。中间深紫色的游戏布局，则是通过函数来实现的动态游戏界面，它需要通过引入包名和类名来置入，在AS中调试的时候我发现布局界面无法显示游戏实现的动态区域，提示Rendering Problems而无法加载布局，而把此游戏实现区域注释掉后则能显示布局
 ```
             <com.lthergo.game2048.GameView
                 android:id="@+id/gameView"
@@ -33,7 +33,7 @@
 
 ```
 而底部则设置了两个Button来实现查看作者信息和重新开始游戏的操作。
-*布局请一定用代码来操作!不要在可视界面拖拽，不然会浪费很多时间！*
+**==布局请一定用代码来操作!不要在可视界面拖拽，不然会浪费很多时间！==**
 
 ## 游戏实现的主要方法
 ##### 判断操作者的滑动方向
@@ -123,11 +123,14 @@ setOnTouchListener(new OnTouchListener() {
         }
     }
 ```
-还有若干方法的实现需要考虑，比如卡片的大小和对应的不同尺寸的手机自适应，不同数值对应的卡片背景颜色的设置，判断游戏初始化和每次滑动添加随机数卡片，记分并显示当前分数和最高分保存，判断游戏是否结束并弹窗等等，不一一累赘了，详情请转到https://lthergo.com/game2048
+还有若干方法的实现需要考虑，比如卡片的大小和对应的不同尺寸的手机自适应，不同数值对应的卡片背景颜色的设置，判断游戏初始化和每次滑动添加随机数卡片，记分并显示当前分数和最高分保存，判断游戏是否结束并弹窗等等，不一一累赘了
 ## 部分Bug
-在发给我朋友测试的过程中，发现了安卓系统版本不同所导致的若干问题
-小米4（Android4.4），游戏界面布局不一样，似乎变成默认的了，比如Button的样式，StatusBar不显示等等，暂时不知道问题出在哪，暂时并无大碍，可能是Android版本问题导致的style不同吧orz
-![](readme.res/bug1.png)
-Android7.0及以上版本
-
-
+在发给我朋友测试的过程中，发现了安卓系统版本不同所导致的若干问题  
+小米4（Android4.4）  
+游戏界面布局不一样，似乎变成默认的了，比如Button的样式，StatusBar不显示等等，暂时不知道问题出在哪，暂时并无大碍，可能是Android版本问题导致的AppCompat不同吧，但是打包编译过后应该不会这样啊orz，于是我修改了一点布局样式让在4.4系统中也较为美观  
+![](readme.res/bug1.png)  
+Android7.0及以上版本  
+最开始打开游戏时候gameview的区域不显示，而需要初次滑动之后才显示游戏gameview区域，我试过在游戏初始化添加swipeleft（right，up，down）等操作模拟滑动，可是还是不显示。这一现象只在高版本的安卓系统才出现，结合在布局界面出现的Rendering Problems，我认为应该是同一个问题。最终我只能在初始化界面加了一个TextView提示游戏已经正常打开，在执行任意一方向滑动操作后将此TextView去除，这样只是不好看了点  
+![](readme.res/bug2.png)  
+######更多代码详解，请访问我的博客：
+https://lthergo.com/game2048.html
